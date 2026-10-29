@@ -6,6 +6,7 @@ import Home from './pages/Home.jsx';
 import Login from './pages/Login.jsx';
 import Signup from './pages/Signup.jsx';
 import Favorites from './pages/Favorites.jsx';
+import Map3D from './pages/Map3D.jsx';
 
 function Navbar() {
   const { user, nickname, signOut, loading } = useAuth();
@@ -16,6 +17,7 @@ function Navbar() {
       <Link to="/" className="brand"><Mascot size={38} /> <span>감귤이의 제주 갤러리</span></Link>
       <nav>
         <NavLink to="/" end>갤러리</NavLink>
+        <NavLink to="/map">🗺️ 3D 지도</NavLink>
         <NavLink to="/favorites">♥ 내 보관함</NavLink>
         {!loading && (user ? (
           <>
@@ -53,6 +55,7 @@ export default function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/map" element={<Map3D />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/favorites" element={<RequireAuth><Favorites /></RequireAuth>} />

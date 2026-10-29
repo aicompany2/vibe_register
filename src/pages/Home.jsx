@@ -14,6 +14,7 @@ export default function Home() {
           <p>한라산, 돌하르방, 유채꽃, 파란 바다까지. 마음에 드는 사진은 ♥ 로 내 보관함에 담아 보세요!</p>
           <div className="hero-cta">
             {user ? <Link to="/favorites" className="btn">♥ {nickname}님의 보관함</Link> : <Link to="/signup" className="btn">무료로 시작하기</Link>}
+            <Link to="/map" className="btn ghost">🗺️ 3D 제주 지도</Link>
             <a href="#gallery" className="btn ghost">사진 구경하기</a>
           </div>
         </div>

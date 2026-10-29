@@ -76,4 +76,53 @@ img { max-width: 100%; display: block; }
 .auth-card input:focus, .search input:focus { outline: 3px solid #ffd27a; }
 .alt { margin: 4px 0 0; font-size: 15px; }
 
+/* 3D 제주 지도 */
+.map-page { max-width: 1320px; margin: 0 auto; padding: 20px 16px 36px; }
+.map-intro { margin: 0 0 14px; max-width: 820px; }
+.map-grid { display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 16px; align-items: start; }
+.map-stage-wrap { position: relative; }
+.map-stage { position: relative; height: min(74vh, 760px); min-height: 440px; border: 3px solid var(--navy); border-radius: 22px; overflow: hidden; background: #0b3a53; box-shadow: 0 6px 0 #0b3a5333; }
+.map-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; text-align: center; color: #fff; font-size: 20px; padding: 20px; background: linear-gradient(160deg, #0aa3b0, #1e7fb8); z-index: 3; }
+.map-overlay.err { background: #5a2a36; }
+.map-tools { position: absolute; top: 12px; right: 12px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; z-index: 4; }
+.map-tools .btn { padding: 5px 14px; font-size: 14px; }
+.map-hint { margin-top: 8px; font-size: 13px; color: #5d7a8a; }
+.map-side { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.map-chips { margin: 0; }
+.map-chips .chip { font-size: 14px; }
+.mcard { position: relative; background: #fff; border: 3px solid var(--navy); border-radius: 18px; padding: 14px 16px 14px; box-shadow: 0 4px 0 #0b3a5333; }
+.mcard h3 { margin: 6px 0 4px; font-size: 22px; }
+.mcard p { margin: 4px 0; font-size: 15px; }
+.mtag { display: inline-block; color: #fff; font-size: 13px; padding: 1px 10px; border-radius: 999px; }
+.mtip { color: var(--orange-d); }
+.mclose { position: absolute; top: 8px; right: 10px; border: 0; background: none; font-size: 18px; cursor: pointer; color: var(--navy); }
+.mnote { font-size: 14px; color: #5d7a8a; margin: 8px 0 0; }
+.mnote.warn { color: #8a1f3d; }
+.vchart { margin-top: 10px; padding-top: 8px; border-top: 2px dashed var(--line); }
+.vtitle { font-size: 14px; }
+.vbars { display: flex; align-items: flex-end; gap: 4px; height: 90px; margin-top: 6px; }
+.vbar { flex: 1; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; min-width: 0; }
+.vbar span { display: block; width: 100%; background: var(--teal); border-radius: 4px 4px 0 0; }
+.vbar em { font-style: normal; font-size: 11px; color: #5d7a8a; }
+.vsrc { margin-top: 6px; font-size: 11px; color: #5d7a8a; }
+.mlist { list-style: none; margin: 0; padding: 0; max-height: 360px; overflow: auto; background: #fff; border: 2px solid var(--line); border-radius: 14px; }
+.mlist li + li { border-top: 1px solid var(--line); }
+.mlist button { width: 100%; text-align: left; font: inherit; font-size: 15px; padding: 7px 12px; border: 0; background: none; cursor: pointer; color: var(--navy); display: flex; align-items: center; gap: 6px; }
+.mlist button:hover, .mlist button.on { background: #ffe7b8; }
+.mdot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+.map-foot { font-size: 13px; color: #5d7a8a; margin: 12px 0 0; }
+.jm-pins { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 2; }
+.jm-pin { position: absolute; left: 0; top: 0; pointer-events: auto; display: flex; align-items: center; gap: 4px; font: inherit; font-size: 12px; line-height: 1; padding: 3px 6px; background: #fff; color: var(--navy); border: 2px solid var(--c); border-radius: 999px; cursor: pointer; white-space: nowrap; box-shadow: 0 2px 0 #0b3a5344; }
+.jm-pin::after { content: ''; position: absolute; left: 50%; bottom: -6px; width: 8px; height: 8px; background: #fff; border-right: 2px solid var(--c); border-bottom: 2px solid var(--c); transform: translateX(-50%) rotate(45deg); }
+.jm-ic { font-size: 15px; }
+.jm-lb { display: none; }
+.jm-pin.near .jm-lb, .jm-pin.sel .jm-lb, .jm-pin:hover .jm-lb { display: inline; }
+.jm-pin.sel { background: var(--c); color: #fff; box-shadow: 0 0 0 3px #fff8, 0 2px 0 #0b3a5344; }
+.jm-pin.sel::after { background: var(--c); }
+@media (max-width: 920px) {
+  .map-grid { grid-template-columns: minmax(0, 1fr); }
+  .map-stage { height: 62vh; min-height: 380px; }
+  .mlist { max-height: 260px; }
+}
+
 .footer { text-align: center; padding: 22px 16px 34px; font-size: 13px; color: #5d7a8a; border-top: 2px solid var(--line); }

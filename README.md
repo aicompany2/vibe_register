@@ -11,7 +11,10 @@ React + Vite 로 만들었고 Vercel 에 배포합니다.
 ## 폴더 구조
 ```
 api/pixabay.js          Pixabay 프록시 (API 키를 서버에만 둠)
-src/                    React 앱 (페이지: 갤러리, 로그인, 회원가입, 내 보관함)
+api/visitors.js         공공데이터포털(서귀포시 관람객수 추이) 프록시
+src/                    React 앱 (페이지: 갤러리, 3D 지도, 로그인, 회원가입, 내 보관함)
+src/three/jejuMap.js    three.js 로 만든 3D 제주 지도 (지형·바다·오름·풍력발전기·등대·돌하르방·올레길)
+src/data/jejuPlaces.js  3D 지도에 올라가는 장소 데이터 (여기에 한 줄 추가하면 핀이 생겨요)
 supabase/schema.sql     보관함 테이블 + RLS 정책 (SQL Editor 에서 실행)
 .env.example            환경변수 예시
 vercel.json             SPA 라우팅 설정
@@ -72,9 +75,17 @@ git push -u origin main
    | `VITE_SUPABASE_URL` | Supabase Project URL | 브라우저에 포함됨 (괜찮음) |
    | `VITE_SUPABASE_ANON_KEY` | Supabase anon public 키 | 브라우저에 포함됨 (RLS 로 보호) |
    | `PIXABAY_API_KEY` | Pixabay 키 | **서버 전용** (VITE_ 붙이지 말 것) |
+   | `DATA_GO_KR_KEY` | 공공데이터포털 인증키 (Encoding/Decoding 아무거나) | **서버 전용**, 3D 지도의 관람객 그래프에만 쓰여요 (없어도 지도는 동작) |
 
 5. **Deploy** → 완료되면 나온 주소를 위 1-5단계의 Supabase **URL Configuration** 에 등록
 6. 환경변수를 나중에 바꿨다면 **Deployments → Redeploy** 해야 반영돼요.
+
+## 3D 제주 지도 (`/map`)
+- 한라산(1,947m)·오름·해안선·풍력발전기·등대·돌하르방을 three.js 로 입체 표현하고, 관광지·올레길·항포구·감귤 재배지를 핀으로 보여줘요.
+- 마우스 드래그로 회전, 휠/핀치로 확대, 핀이나 오른쪽 목록을 누르면 카메라가 날아가요. ☀️/🌙 로 낮밤을 바꾸면 등대 불빛이 돌아요.
+- 지형은 실제를 단순화한 모형이고 세로 높이를 5배 과장했어요. 장소 좌표는 개략적이에요.
+- 관람객 그래프는 `api/visitors.js` → 공공데이터포털 "서귀포시 직영관광지 관람객수 추이"(천지연·정방·주상절리·천제연·산방산·감귤박물관). `DATA_GO_KR_KEY` 가 없거나 승인 전이면 그래프 자리에 안내만 나와요.
+- 새 장소 추가: `src/data/jejuPlaces.js` 에 `{ id, cat, name, lon, lat, desc }` 한 줄을 넣으면 돼요.
 
 ## 문제 해결
 | 증상 | 확인할 것 |
